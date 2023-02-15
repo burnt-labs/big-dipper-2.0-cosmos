@@ -1,9 +1,16 @@
+---
+
 name: Test
 on:
-  pull_request:
+  push:
+    branches:
+      - chains/burnt
+  workflow_dispatch:
+
 concurrency:
   group: ${{ github.ref }}-test
   cancel-in-progress: true
+
 env:
   HUSKY: 0                                # disable husky
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}   # for Turborepo remote cache
@@ -11,9 +18,11 @@ env:
   NEXT_TELEMETRY_DISABLED: 1              # disable NextJS telemetry
   SENTRYCLI_SKIP_DOWNLOAD: 1              # disable Sentry.io CLI download
   FORCE_COLOR: 0                          # disable terminal color in yarn berry
+
 defaults:
   run:
     shell: bash
+
 jobs:
   check-yarn-cache:
     runs-on: ubuntu-latest

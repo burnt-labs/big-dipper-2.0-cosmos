@@ -1,5 +1,5 @@
 ARG BASE_IMAGE=node:18
-ARG PROJECT_NAME=web
+ARG PROJECT_NAME=web-burnt
 
 # This is a multiple stage Dockerfile.
 # - Stage 1: starter (base image with Node.js 18 and the turbo package installed globally)
